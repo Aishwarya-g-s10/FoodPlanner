@@ -11,27 +11,37 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
-    EditText emailtext, passwordtext;
+    EditText nametext,emailtext, passwordtext;
+    Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        nametext=findViewById(R.id.editTextName);
         emailtext=findViewById(R.id.editTextEmail);
         passwordtext=findViewById(R.id.editTextPassword);
+        db = new Database(Register.this);
     }
     public void signup(View view)
     {
         String email=emailtext.getText().toString();
         String password=passwordtext.getText().toString();
+        String name=nametext.getText().toString();
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(Register.this, "Please enter all the data", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!isvalidpassword(password))
         {
             Toast.makeText(this,"The password is invalid",Toast.LENGTH_LONG).show();
             return;
         }
-        //Intent ref=new Intent(this,HomePage.class);
+        db.addNewUser(name, email, password);
+        Intent ref=new Intent(this,HomePage.class);
         //ref.putExtra("email",email);
         //ref.putExtra("password",password);
-        //startActivity(ref);
+        startActivity(ref);
+        finish();
     }
     Pattern lowercase=Pattern.compile("^.*[a-z].*$");
     Pattern uppercase=Pattern.compile("^.*[A-Z].*$");
