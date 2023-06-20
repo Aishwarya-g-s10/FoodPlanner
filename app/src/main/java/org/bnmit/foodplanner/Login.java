@@ -12,26 +12,18 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     EditText emailtext,passwordtext;
-    String remail, rpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         emailtext=findViewById(R.id.editTextEmail);
         passwordtext=findViewById(R.id.editTextPassword);
-        remail=getIntent().getStringExtra("email");
-        rpassword=getIntent().getStringExtra("password");
 
         }
         public void login(View view)
         {
             String email=emailtext.getText().toString();
             String password=passwordtext.getText().toString();
-            if (!((email.equals(remail)) && (password.equals(rpassword))))
-            {
-                Toast.makeText(this,"Password or email is mismatched",Toast.LENGTH_LONG).show();
-                return;
-            }
             Database database=new Database(this);
             SQLiteDatabase db = database.getReadableDatabase();
             String query = "SELECT * FROM user WHERE username = ? AND password = ?";
@@ -40,6 +32,11 @@ public class Login extends AppCompatActivity {
                 Intent ref=new Intent(this,HomePage.class);
                 startActivity(ref);
                 finish();
+            }
+            else
+            {
+                Toast.makeText(this,"Password or email is mismatched",Toast.LENGTH_LONG).show();
+                return;
             }
             cursor.close();
 
