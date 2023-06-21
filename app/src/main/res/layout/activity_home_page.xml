@@ -18,4 +18,55 @@
         android:textSize="34sp"
         tools:layout_editor_absoluteX="196dp"
         tools:layout_editor_absoluteY="191dp" />
+
+    <ImageView
+        android:id="@+id/imgrecipe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="330dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/recipe" />
+
+    <ImageView
+        android:id="@+id/imgschedule"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/schedule" />
+
+    <ImageView
+        android:id="@+id/imgshopping"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/shopping_List" />
+
+    <ImageView
+        android:id="@+id/imgtimer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/stopwatch" />
+
+    <ImageView
+        android:id="@+id/imguser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/user" />
+
 </RelativeLayout>
