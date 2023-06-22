@@ -5,23 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button register,login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Create an intent to start the next activity
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                startActivity(intent);
+        register=findViewById(R.id.button1);
+        login=findViewById(R.id.button2);
 
-                // Finish the current activity
-                finish();
-            }
-        }, 3000);
+
     }
+    public void register(View view){
+        Intent ref = new Intent(this, Register.class);
+        startActivity(ref);
+    }
+    public void login(View view){
+        Intent ref = new Intent(this, Login.class);
+        startActivity(ref);
+    }
+
 }

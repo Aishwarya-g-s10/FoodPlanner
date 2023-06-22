@@ -61,22 +61,26 @@
         android:textSize="34sp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="92dp"
-        android:layout_marginBottom="249dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="256dp"
+        android:background="@color/purple_200"
+        android:onClick="register"
         android:text="Register and get started" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="111dp"
+        android:layout_marginEnd="143dp"
         android:layout_marginBottom="128dp"
+        android:background="@color/purple_200"
+        android:onClick="login"
         android:text="Login to continue" />
 </RelativeLayout>
