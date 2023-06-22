@@ -18,5 +18,46 @@ public class HomePage extends AppCompatActivity {
         timer=findViewById(R.id.imgtimer);
         shopping=findViewById(R.id.imgshopping);
         profile=findViewById(R.id.imguser);
+        recipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent rec=new Intent(HomePage.this,Recipe.class);
+                startActivity(rec);
+                finish();
+            }
+        });
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sch=new Intent(HomePage.this,Calender.class);
+                startActivity(sch);
+                finish();
+            }
+        });
+        timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ti=new Intent(HomePage.this,TimerActivity.class);
+                startActivity(ti);
+                finish();
+            }
+        });
+        shopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shop=new Intent(HomePage.this,Shopping.class);
+                startActivity(shop);
+                finish();
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pro=new Intent(HomePage.this,Profile.class);
+                startActivity(pro);
+                finish();
+            }
+        });
+
     }
 }

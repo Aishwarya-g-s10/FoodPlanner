@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
-    EditText nametext,emailtext, passwordtext, confirmtext;
+    EditText nametext, emailtext, passwordtext, confirmtext;
+    TextView login;
     Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,15 @@ public class Register extends AppCompatActivity {
         passwordtext=findViewById(R.id.editTextPassword);
         confirmtext=findViewById(R.id.editTextPassword1);
         db = new Database(Register.this);
+        login=findViewById(R.id.textView9);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent log=new Intent(Register.this,Login.class);
+                startActivity(log);
+                finish();
+            }
+        });
     }
     public void signup(View view)
     {
