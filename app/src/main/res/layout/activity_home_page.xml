@@ -47,7 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="12dp"
-        app:srcCompat="@drawable/shopping_List" />
+        app:srcCompat="@drawable/shoppinglist" />
 
     <ImageView
         android:id="@+id/imgtimer"
