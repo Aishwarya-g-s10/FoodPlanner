@@ -4,21 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:alpha="0.8"
+    android:background="@drawable/food_planner"
+    android:textAlignment="center"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="476dp"
+        android:fontFamily="casual"
+        android:text="FOOD PLANNER"
+        android:textAlignment="center"
+        android:textColor="#4A012D"
+        android:textColorHighlight="#2E0303"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="324dp"
+        android:fontFamily="cursive"
+        android:text="Meal plan done right!"
+        android:textAlignment="center"
+        android:textColor="#0B100F"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="380dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Food Planner"
-        android:textAlignment="textEnd"
-        android:textColor="#DA98EC"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="207dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="185dp"
+        android:layout_marginBottom="190dp"
+        android:text="OR"
+        android:textColor="#0E0E0E"
+        android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="249dp"
+        android:text="Register and get started" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="128dp"
+        android:text="Login to continue" />
 </RelativeLayout>
