@@ -24,33 +24,6 @@ public class Register extends AppCompatActivity {
         confirmtext=findViewById(R.id.editTextPassword1);
         db = new Database(Register.this);
     }
-    public void signup(View view)
-    {
-        String email=emailtext.getText().toString();
-        String password=passwordtext.getText().toString();
-        String confirmPassword = confirmtext.getText().toString();
-        String name=nametext.getText().toString();
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Register.this, "Please enter all the data", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this, "Please enter valid email id", Toast.LENGTH_SHORT).show();
-        }
-        if (!isvalidpassword(password))
-        {
-            Toast.makeText(this,"Please enter valid password",Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(!password.equals(confirmPassword)){
-            Toast.makeText(this,"Password are not matching",Toast.LENGTH_LONG).show();
-        }
-        db.addNewUser(name, email, password);
-        Intent ref=new Intent(this,Login.class);
-
-        startActivity(ref);
-//        finish();
-    }
     Pattern lowercase=Pattern.compile("^.*[a-z].*$");
     Pattern uppercase=Pattern.compile("^.*[A-Z].*$");
     Pattern numchar=Pattern.compile("^.*[0-9].*$");
@@ -80,4 +53,32 @@ public class Register extends AppCompatActivity {
         return true;
 
     }
+    public void signup(View view)
+    {
+        String email=emailtext.getText().toString();
+        String password=passwordtext.getText().toString();
+        String confirmPassword = confirmtext.getText().toString();
+        String name=nametext.getText().toString();
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(Register.this, "Please enter all the data", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Please enter valid email id", Toast.LENGTH_SHORT).show();
+        }
+        if (!isvalidpassword(password))
+        {
+            Toast.makeText(this,"Please enter valid password",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(!password.equals(confirmPassword)){
+            Toast.makeText(this,"Password are not matching",Toast.LENGTH_LONG).show();
+        }
+        db.addNewUser(name, email, password);
+        Intent ref=new Intent(this,Login.class);
+
+        startActivity(ref);
+//        finish();
+    }
+
 }
