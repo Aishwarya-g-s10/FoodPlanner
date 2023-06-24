@@ -73,6 +73,8 @@ public class Database extends SQLiteOpenHelper {
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + "recipe");
+        db.execSQL("DROP TABLE IF EXISTS " + "ingridients");
         onCreate(db);
     }
     public SQLiteDatabase getReadableDatabase() {
