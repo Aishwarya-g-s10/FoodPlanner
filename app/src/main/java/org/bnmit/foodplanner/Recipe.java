@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 public class Recipe extends AppCompatActivity {
     ImageView home,schedule,timer,shopping,profile;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +19,12 @@ public class Recipe extends AppCompatActivity {
         timer=findViewById(R.id.imgtimer);
         shopping=findViewById(R.id.imgshopping);
         profile=findViewById(R.id.imguser);
+        id=getIntent().getIntExtra("id",1);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent h=new Intent(Recipe.this,HomePage.class);
+                h.putExtra("id",id);
                 startActivity(h);
                 finish();
             }
@@ -30,6 +33,7 @@ public class Recipe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent sch=new Intent(Recipe.this,Calender.class);
+                sch.putExtra("id",id);
                 startActivity(sch);
                 finish();
             }
@@ -38,6 +42,7 @@ public class Recipe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent ti=new Intent(Recipe.this,TimerActivity.class);
+                ti.putExtra("id",id);
                 startActivity(ti);
                 finish();
             }
@@ -46,6 +51,7 @@ public class Recipe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent shop=new Intent(Recipe.this,Shopping.class);
+                shop.putExtra("id",id);
                 startActivity(shop);
                 finish();
             }
@@ -54,6 +60,7 @@ public class Recipe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent pro=new Intent(Recipe.this,Profile.class);
+                pro.putExtra("id",id);
                 startActivity(pro);
                 finish();
             }

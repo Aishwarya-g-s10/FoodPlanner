@@ -2,6 +2,7 @@ package org.bnmit.foodplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,15 +13,15 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     EditText emailtext,passwordtext;
-
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         emailtext=findViewById(R.id.editTextEmail);
         passwordtext=findViewById(R.id.editTextPassword);
-
         }
+        @SuppressLint("Range")
         public void login(View view)
         {
             String email=emailtext.getText().toString();
@@ -40,7 +41,9 @@ public class Login extends AppCompatActivity {
             String query1 = "SELECT * FROM user WHERE username=? and password = ? ";
             Cursor cursor1 = db.rawQuery(query1, new String[]{email,password});
             if (cursor1.moveToFirst()) {
+                id = cursor1.getInt(cursor1.getColumnIndex("id"));
                 Intent ref=new Intent(this,HomePage.class);
+                ref.putExtra("id",id);
                 startActivity(ref);
                 finish();
             }

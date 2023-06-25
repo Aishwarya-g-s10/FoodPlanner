@@ -7,13 +7,14 @@
     tools:context=".Calender">
 
     <CalendarView
-        android:id="@+id/calendarView2"
-        android:layout_width="410dp"
-        android:layout_height="355dp"
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="358dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="376dp" />
+        android:layout_marginBottom="373dp" />
+
     <ImageView
         android:id="@+id/imgrecipe"
         android:layout_width="50dp"
@@ -63,4 +64,59 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="12dp"
         app:srcCompat="@drawable/user" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="366dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="81dp"
+        android:clickable="true"
+        app:backgroundTint="#B4FFF8"
+        app:srcCompat="@drawable/add"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editplan"
+        android:layout_width="345dp"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="152dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Enter you plan"
+        android:inputType="textMultiLine"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imgcheck"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="169dp"
+        app:srcCompat="@drawable/check" />
+
+    <TextView
+        android:id="@+id/textdisplay"
+        android:layout_width="377dp"
+        android:layout_height="47dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="294dp" />
+
 </RelativeLayout>

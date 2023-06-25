@@ -19,6 +19,7 @@ public class TimerActivity extends AppCompatActivity {
     Handler h;
     boolean isTimerRunning;
     int seconds=0;
+    int id;
     NumberPicker s,m,hour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,13 @@ public class TimerActivity extends AppCompatActivity {
         s=findViewById(R.id.secondsPicker);
         m=findViewById(R.id.minutesPicker);
         hour=findViewById(R.id.hourPicker);
+        id=getIntent().getIntExtra("id",1);
         h=new Handler();
         recipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent rec=new Intent(TimerActivity.this,Recipe.class);
+                rec.putExtra("id",id);
                 startActivity(rec);
                 finish();
             }
@@ -53,6 +56,7 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent sch=new Intent(TimerActivity.this,Calender.class);
+                sch.putExtra("id",id);
                 startActivity(sch);
                 finish();
             }
@@ -61,6 +65,7 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent h=new Intent(TimerActivity.this,HomePage.class);
+                h.putExtra("id",id);
                 startActivity(h);
                 finish();
             }
@@ -69,6 +74,7 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent shop=new Intent(TimerActivity.this,Shopping.class);
+                shop.putExtra("id",id);
                 startActivity(shop);
                 finish();
             }
@@ -77,6 +83,7 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent pro=new Intent(TimerActivity.this,Profile.class);
+                pro.putExtra("id",id);
                 startActivity(pro);
                 finish();
             }
