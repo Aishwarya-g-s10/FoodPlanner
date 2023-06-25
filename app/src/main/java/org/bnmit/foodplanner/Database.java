@@ -27,6 +27,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(query1);
         String query2 = "CREATE TABLE ingridients (ingridient_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,quantity DECIMAL(5,2), recipeid INTEGER, unit TEXT,FOREIGN KEY (recipeid) REFERENCES recipe(recipe_id) ON DELETE CASCADE)";
         db.execSQL(query2);
+        String query3 = "CREATE TABLE calendar (event_id INTEGER PRIMARY KEY AUTOINCREMENT, event TEXT,date INTEGER, userid INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
+        db.execSQL(query3);
 //        addNewUser("Admin","Admin@gmail.com","Admin@123");
 //        addNewRecipe("Masala Dosa",20,1,1);
 //        addNewIngridient("urad dhal",0.5,1,"cup");
@@ -67,6 +69,16 @@ public class Database extends SQLiteOpenHelper {
         values.put("recipeid", recipeid);
         values.put("unit", unit);
         db.insert("ingridients", null, values);
+        db.close();
+    }
+    public void addNewEvent(String event, long date, int userid) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("event", event);
+        values.put("date", date);
+        values.put("userid", userid);
+        db.insert("calendar", null, values);
         db.close();
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
