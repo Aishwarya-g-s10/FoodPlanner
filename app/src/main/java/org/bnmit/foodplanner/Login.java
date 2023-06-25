@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity {
 
             Database database=new Database(this);
             SQLiteDatabase db = database.getReadableDatabase();
-            String query = "SELECT * FROM user WHERE username = ? ";
+            String query = "SELECT * FROM user WHERE username = ?";
             Cursor cursor = db.rawQuery(query, new String[]{email});
 
             if (!cursor.moveToFirst())
@@ -37,9 +37,9 @@ public class Login extends AppCompatActivity {
                 return;
             }
             cursor.close();
-            String query1 = "SELECT * FROM user WHERE password = ? ";
-            Cursor cursor1 = db.rawQuery(query, new String[]{password});
-            if (cursor.moveToFirst()) {
+            String query1 = "SELECT * FROM user WHERE username=? and password = ? ";
+            Cursor cursor1 = db.rawQuery(query1, new String[]{email,password});
+            if (cursor1.moveToFirst()) {
                 Intent ref=new Intent(this,HomePage.class);
                 startActivity(ref);
                 finish();

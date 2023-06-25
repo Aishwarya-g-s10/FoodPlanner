@@ -102,15 +102,18 @@ public class TimerActivity extends AppCompatActivity {
         egg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stopTimer();
                 seconds=300;
-                h.postDelayed(t,0);
+                startTimer();
 
             }
         });
         milk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stopTimer();
                 seconds=180;
+                startTimer();
             }
         });
 
@@ -150,6 +153,8 @@ public class TimerActivity extends AppCompatActivity {
             String time = String.format("%02d:%02d:%02d", hours,minutes, remainingSeconds);
             count.setText(time);
             h.postDelayed(this,1000);
+            if (seconds<=0)
+                resetTimer();
             seconds--;
         }
     };

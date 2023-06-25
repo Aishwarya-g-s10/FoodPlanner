@@ -23,21 +23,19 @@ public class Database extends SQLiteOpenHelper {
                 + USERNAME_COL + " TEXT,"
                 + PASSWORD_COL + " TEXT)";
         db.execSQL(query);
-        addNewUser("Admin","Admin@gmail.com","Admin@123");
-        String query1 = "CREATE TABLE recipe ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,serving INTEGER, userid INTEGER, public INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
+        String query1 = "CREATE TABLE recipe ( recipe_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,serving INTEGER, userid INTEGER, is_public INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
         db.execSQL(query1);
-        addNewRecipe("Masala Dosa",20,1,1);
-        String query2 = "CREATE TABLE ingridients ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,quantity DECIMAL(5,2), recipeid INTEGER, unit TEXT,FOREIGN KEY (recipeid) REFERENCES recipe(id) ON DELETE CASCADE)";
+        String query2 = "CREATE TABLE ingridients (ingridient_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,quantity DECIMAL(5,2), recipeid INTEGER, unit TEXT,FOREIGN KEY (recipeid) REFERENCES recipe(recipe_id) ON DELETE CASCADE)";
         db.execSQL(query2);
-        addNewIngridient("urad dhal",0.5,1,"cup");
-        addNewIngridient("chana dhal",3,1,"tablespoon");
-        addNewIngridient("Sona Masoori",1.5,1,"cup");
-        addNewIngridient("idli rice",0.5,1,"cup");
-        addNewIngridient("poha",3,1,"tablespoon");
-        addNewIngridient("fenugreek",0.5,1,"teaspoon");
-        addNewIngridient("water",1.75,1,"cup");
+//        addNewUser("Admin","Admin@gmail.com","Admin@123");
+//        addNewRecipe("Masala Dosa",20,1,1);
+//        addNewIngridient("urad dhal",0.5,1,"cup");
+//        addNewIngridient("chana dhal",3,1,"tablespoon");
+//        addNewIngridient("Sona Masoori",1.5,1,"cup");
+//        addNewIngridient("idli rice",0.5,1,"cup");
+//        addNewIngridient("poha",3,1,"tablespoon");
+//        addNewIngridient("fenugreek",0.5,1,"teaspoon");
+//        addNewIngridient("water",1.75,1,"cup");
     }
     public void addNewUser(String name, String username, String password) {
 
@@ -56,7 +54,7 @@ public class Database extends SQLiteOpenHelper {
         values.put("name", name);
         values.put("serving", serving);
         values.put("userid", userid);
-        values.put("public", pub);
+        values.put("is_public", pub);
         db.insert("recipe", null, values);
         db.close();
     }

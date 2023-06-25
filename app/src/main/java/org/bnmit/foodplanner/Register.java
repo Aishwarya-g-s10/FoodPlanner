@@ -39,6 +39,7 @@ public class Register extends AppCompatActivity {
     Pattern uppercase=Pattern.compile("^.*[A-Z].*$");
     Pattern numchar=Pattern.compile("^.*[0-9].*$");
     Pattern spchar=Pattern.compile("^.*[^a-zA-Z0-9].*$");
+    Pattern em=Pattern.compile("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$");
     public boolean isvalidpassword(String password)
     {
         if (password.length()<8)
@@ -70,26 +71,29 @@ public class Register extends AppCompatActivity {
         String password=passwordtext.getText().toString();
         String confirmPassword = confirmtext.getText().toString();
         String name=nametext.getText().toString();
-        if (email.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()||name.isEmpty()||confirmPassword.isEmpty()) {
             Toast.makeText(Register.this, "Please enter all the data", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Please enter valid email id", Toast.LENGTH_SHORT).show();
+            return;
         }
-        if (!isvalidpassword(password))
+        else if (!isvalidpassword(password))
         {
             Toast.makeText(this,"Please enter valid password",Toast.LENGTH_LONG).show();
             return;
         }
-        if(!password.equals(confirmPassword)){
-            Toast.makeText(this,"Password are not matching",Toast.LENGTH_LONG).show();
+        else if(!password.equals(confirmPassword)){
+            Toast.makeText(this,"Passwords are not matching",Toast.LENGTH_LONG).show();
+            return;
         }
-        db.addNewUser(name, email, password);
-        Intent ref=new Intent(this,Login.class);
-
-        startActivity(ref);
+        else {
+            db.addNewUser(name, email, password);
+            Intent ref = new Intent(Register.this, Login.class);
+            startActivity(ref);
 //        finish();
+        }
     }
 
 }

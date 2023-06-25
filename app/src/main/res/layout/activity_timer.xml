@@ -77,6 +77,8 @@
         android:layout_marginBottom="340dp"
         android:layout_weight="1"
         android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:clickable="true"
         android:editable="true"
         android:max="59"
         android:min="0" />
@@ -91,6 +93,8 @@
         android:layout_marginBottom="340dp"
         android:layout_weight="1"
         android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:clickable="true"
         android:editable="true"
         android:max="59"
         android:min="0" />
@@ -105,6 +109,8 @@
         android:layout_marginBottom="340dp"
         android:layout_weight="1"
         android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:clickable="true"
         android:editable="true"
         android:max="59"
         android:min="0" />

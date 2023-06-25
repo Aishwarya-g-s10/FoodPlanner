@@ -55,7 +55,6 @@
         android:layout_marginEnd="125dp"
         android:layout_marginBottom="81dp"
         android:background="@color/purple_200"
-
         android:onClick="signup"
         android:text="SIGNUP"
         android:textColorLink="#520C5E" />
