@@ -55,4 +55,82 @@
         android:layout_marginBottom="12dp"
         app:srcCompat="@drawable/homepage" />
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="672dp" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="277dp"
+        android:layout_height="37dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="605dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/changepassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="228dp"
+        android:layout_marginBottom="516dp"
+        android:text="Change Password"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="329dp"
+        android:layout_marginBottom="558dp"
+        android:text="Logout"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/newpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="178dp"
+        android:layout_marginBottom="450dp"
+        android:ems="10"
+        android:hint="Enter the new password"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/confirmpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="391dp"
+        android:ems="10"
+        android:hint="Confirm new password"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/passwordch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="424dp"
+        android:text="Change Password" />
+
 </RelativeLayout>
