@@ -2,6 +2,7 @@ package org.bnmit.foodplanner;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,11 +35,6 @@ public class ListRecipe extends ArrayAdapter<String> {
 
             number.setText(position + 1 + ".");
             name.setText(list.get(position));
-
-            // Listeners for duplicating and removing an item.
-            // They use the static removeItem and addItem methods created in MainActivity.
-
-
 
         }
         return convertView;

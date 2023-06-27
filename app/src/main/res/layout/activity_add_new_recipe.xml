@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewRecipe">
+
+    <EditText
+        android:id="@+id/recipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="641dp"
+        android:ems="10"
+        android:hint="Enter name of recipe"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="39dp" />
+
+    <EditText
+        android:id="@+id/serving"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="643dp"
+        android:ems="10"
+        android:hint="Serving"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/ingridients"
+        android:layout_width="359dp"
+        android:layout_height="110dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="504dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="\n\n\nEnter Ingridients"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/method"
+        android:layout_width="359dp"
+        android:layout_height="110dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="345dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="\n\n\nEnter Method"
+        android:inputType="textMultiLine" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="320dp"
+        android:layout_marginBottom="150dp" >
+
+        <RadioButton
+            android:id="@+id/radioYes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/radioNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="No" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textpublic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="263dp"
+        android:text="Do you want to share the recipe publicly?"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="91dp"
+        android:text="Add Recipe" />
+
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -39,7 +40,7 @@ public class Recipe extends AppCompatActivity {
         items = new ArrayList<>();
         Database database=new Database(this);
         SQLiteDatabase db = database.getReadableDatabase();
-        String query = "SELECT * FROM recipe WHERE userid in (?,?)";
+        String query = "SELECT * FROM recipe WHERE userid in (?,?) union SELECT * FROM recipe WHERE is_public=1";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id),String.valueOf(1)});
         if (cursor.moveToFirst()) {
             do {
@@ -49,6 +50,15 @@ public class Recipe extends AppCompatActivity {
         }
         adapter = new ListRecipe(this, items);
         listView.setAdapter(adapter);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a=new Intent(Recipe.this,AddNewRecipe.class);
+                a.putExtra("id",id);
+                startActivity(a);
+                finish();
+            }
+        });
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +102,15 @@ public class Recipe extends AppCompatActivity {
                 pro.putExtra("id",id);
                 startActivity(pro);
                 finish();
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedText = (String) parent.getItemAtPosition(position);
+                Intent intent = new Intent(Recipe.this, ViewRecipe.class);
+                intent.putExtra("name",clickedText);
+                startActivity(intent);
             }
         });
     }

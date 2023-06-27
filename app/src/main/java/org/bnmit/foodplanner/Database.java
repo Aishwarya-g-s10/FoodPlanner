@@ -23,7 +23,7 @@ public class Database extends SQLiteOpenHelper {
                 + USERNAME_COL + " TEXT,"
                 + PASSWORD_COL + " TEXT)";
         db.execSQL(query);
-        String query1 = "CREATE TABLE recipe ( recipe_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,serving INTEGER, userid INTEGER, is_public INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
+        String query1 = "CREATE TABLE recipe ( recipe_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,serving INTEGER,ingridients TEXT, method TEXT, userid INTEGER, is_public INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
         db.execSQL(query1);
         String query2 = "CREATE TABLE ingridients (ingridient_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,quantity DECIMAL(5,2), recipeid INTEGER, unit TEXT,FOREIGN KEY (recipeid) REFERENCES recipe(recipe_id) ON DELETE CASCADE)";
         db.execSQL(query2);
@@ -49,11 +49,13 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
-    public void addNewRecipe(String name, int serving, int userid,int pub) {
+    public void addNewRecipe(String name,String ingridients,String method, int serving, int userid,int pub) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
+        values.put("ingridients", ingridients);
+        values.put("method", method);
         values.put("serving", serving);
         values.put("userid", userid);
         values.put("is_public", pub);

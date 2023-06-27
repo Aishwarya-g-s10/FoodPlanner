@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewRecipe">
+
+    <TextView
+        android:id="@+id/recipename"
+        android:layout_width="249dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="630dp"
+        android:text=""
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/in"
+        android:layout_width="359dp"
+        android:layout_height="145dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="458dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/me"
+        android:layout_width="match_parent"
+        android:layout_height="416dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="16dp"
+        android:text="" />
+</RelativeLayout>
