@@ -31,7 +31,6 @@ public class Login extends AppCompatActivity {
             SQLiteDatabase db = database.getReadableDatabase();
             String query = "SELECT * FROM user WHERE username = ?";
             Cursor cursor = db.rawQuery(query, new String[]{email});
-
             if (!cursor.moveToFirst())
             {
                 Toast.makeText(this,"Please enter registered email id",Toast.LENGTH_LONG).show();

@@ -55,4 +55,24 @@
         android:layout_marginBottom="12dp"
         app:srcCompat="@drawable/user" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addnew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="73dp"
+        android:clickable="true"
+        app:backgroundTint="#99FFF3"
+        app:srcCompat="@drawable/add"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="596dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="135dp" />
+
 </RelativeLayout>

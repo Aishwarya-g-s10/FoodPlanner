@@ -2,14 +2,27 @@ package org.bnmit.foodplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class Recipe extends AppCompatActivity {
     ImageView home,schedule,timer,shopping,profile;
+    static ListView listView;
+    static ListRecipe adapter;
+    static ArrayList<String> items;
+    static Context context;
     int id;
+    FloatingActionButton add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +32,23 @@ public class Recipe extends AppCompatActivity {
         timer=findViewById(R.id.imgtimer);
         shopping=findViewById(R.id.imgshopping);
         profile=findViewById(R.id.imguser);
+        listView = findViewById(R.id.list);
+        context = getApplicationContext();
+        add=findViewById(R.id.addnew);
         id=getIntent().getIntExtra("id",1);
+        items = new ArrayList<>();
+        Database database=new Database(this);
+        SQLiteDatabase db = database.getReadableDatabase();
+        String query = "SELECT * FROM recipe WHERE userid in (?,?)";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id),String.valueOf(1)});
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                items.add(name);
+            } while (cursor.moveToNext());
+        }
+        adapter = new ListRecipe(this, items);
+        listView.setAdapter(adapter);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
