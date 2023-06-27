@@ -18,7 +18,6 @@ import java.util.Arrays;
 
 public class Shopping extends AppCompatActivity {
     ImageView recipe,schedule,timer,home,profile;
-
     static ListView listView;
     EditText input;
     ImageView enter;

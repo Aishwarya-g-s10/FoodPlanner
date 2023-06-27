@@ -93,7 +93,7 @@ public class Database extends SQLiteOpenHelper {
     public String updateData(String tableName, String id, String newValue) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("column_name", newValue);
+        values.put("password", newValue);
         String selection = "id = ?";
         String[] selectionArgs = {id};
         int rowsUpdated = db.update(tableName, values, selection, selectionArgs);

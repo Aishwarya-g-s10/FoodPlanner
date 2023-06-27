@@ -19,9 +19,10 @@ public class Profile extends AppCompatActivity {
     ImageView recipe,schedule,timer,shopping,home;
     int id;
     TextView logout, chpassword, name, email;
-    EditText newp,confirmp;
+    EditText newp,confirmp,currp;
     Button pchange;
     Database database;
+    String currpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,26 +37,32 @@ public class Profile extends AppCompatActivity {
         email=findViewById(R.id.email);
         pchange=findViewById(R.id.passwordch);
         newp=findViewById(R.id.newpassword);
+        currp=findViewById(R.id.currpassword);
         confirmp=findViewById(R.id.confirmpassword);
         pchange.setVisibility(View.GONE);
         newp.setVisibility(View.GONE);
         confirmp.setVisibility(View.GONE);
+        currp.setVisibility(View.GONE);
         chpassword=findViewById(R.id.changepassword);
         id=getIntent().getIntExtra("id",1);
-        database=new Database(this);
+        database=new Database(Profile.this);
         SQLiteDatabase db = database.getReadableDatabase();
         String query = "SELECT * FROM user WHERE id = ?";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id)});
-        String n= cursor.getString(cursor.getColumnIndexOrThrow("name"));
-        name.setText("Hello, "+n);
-        String e=cursor.getString(cursor.getColumnIndexOrThrow("username"));
-        email.setText("Email: "+e);
+        if (cursor.moveToFirst()) {
+            String n = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            name.setText("Hello, " + n);
+            String e = cursor.getString(cursor.getColumnIndexOrThrow("username"));
+            email.setText("Email: " + e);
+            currpassword=cursor.getString(cursor.getColumnIndexOrThrow("password"));
+        }
         chpassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pchange.setVisibility(View.VISIBLE);
                 newp.setVisibility(View.VISIBLE);
                 confirmp.setVisibility(View.VISIBLE);
+                currp.setVisibility(View.VISIBLE);
             }
         });
         pchange.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +70,15 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 String pnew=newp.getText().toString();
                 String pconf=confirmp.getText().toString();
-                if (pnew.isEmpty() || pconf.isEmpty())
+                String pcurr=currp.getText().toString();
+                if (pnew.isEmpty() || pconf.isEmpty() || pcurr.isEmpty())
                 {
-                    Toast.makeText(Profile.this,"Enter new password and confirm password",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Profile.this,"Enter all the details",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if (!pcurr.equals(currpassword))
+                {
+                    Toast.makeText(Profile.this,"The entered current password is incorrect",Toast.LENGTH_LONG).show();
                     return;
                 }
                 else if (!pnew.equals(pconf))
@@ -86,6 +99,7 @@ public class Profile extends AppCompatActivity {
                 pchange.setVisibility(View.GONE);
                 newp.setVisibility(View.GONE);
                 confirmp.setVisibility(View.GONE);
+                currp.setVisibility(View.GONE);
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
