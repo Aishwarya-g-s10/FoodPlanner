@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ public class TimerActivity extends AppCompatActivity {
     boolean isTimerRunning;
     int seconds=0;
     int id;
-    NumberPicker s,m,hour;
+    EditText s,m,hour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +39,9 @@ public class TimerActivity extends AppCompatActivity {
         stop.setVisibility(View.GONE);
         reset.setVisibility(View.GONE);
         count=findViewById(R.id.textcount);
-        s=findViewById(R.id.secondsPicker);
-        m=findViewById(R.id.minutesPicker);
-        hour=findViewById(R.id.hourPicker);
+        s=findViewById(R.id.second);
+        m=findViewById(R.id.minute);
+        hour=findViewById(R.id.hour);
         id=getIntent().getIntExtra("id",1);
         h=new Handler();
         recipe.setOnClickListener(new View.OnClickListener() {
@@ -126,11 +127,36 @@ public class TimerActivity extends AppCompatActivity {
 
     }
     private void startTimer() {
+        int se=0,min=0,ho=0;
         if (seconds==0)
         {
-            int se=s.getValue();
-            int min=m.getValue();
-            int ho=hour.getValue();
+            if ((s.getText().toString()).isEmpty())
+                se=0;
+            else
+            {
+                se=Integer.parseInt(s.getText().toString());
+                if (se>59)
+                {
+                    se=59;
+                    s.setText("59");
+                }
+            }
+            if ((m.getText().toString()).isEmpty())
+                min=0;
+            else
+            {
+                min=Integer.parseInt(m.getText().toString());
+                if (min>59)
+                {
+                    min=59;
+                    m.setText("59");
+                }
+            }
+            if ((hour.getText().toString()).isEmpty())
+                ho=0;
+            else {
+                ho = Integer.parseInt(hour.getText().toString());
+            }
             seconds=ho*3600+min*60+se;
         }
         isTimerRunning = true;
