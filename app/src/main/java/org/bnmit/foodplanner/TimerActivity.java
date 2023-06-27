@@ -2,6 +2,9 @@ package org.bnmit.foodplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -189,6 +192,15 @@ public class TimerActivity extends AppCompatActivity {
             if (seconds<=0)
                 resetTimer();
             seconds--;
+            if (seconds==0)
+            {
+                Intent alarmIntent = new Intent(TimerActivity.this, AlarmReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(TimerActivity.this, 0, alarmIntent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) TimerActivity.this.getSystemService(Context.ALARM_SERVICE);
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent);
+            }
         }
     };
 
