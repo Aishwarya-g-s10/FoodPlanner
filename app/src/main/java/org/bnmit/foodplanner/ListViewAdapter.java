@@ -26,17 +26,19 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if(convertView == null){
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView=layoutInflater.inflate(R.layout.list_row, null);
-            TextView number = convertView.findViewById(R.id.number);
-            number.setText(position + 1 + ".");
-
+        if (convertView == null) {
+            LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            convertView = mInflater.inflate(R.layout.list_row, null);
             TextView name = convertView.findViewById(R.id.name);
+            ImageView remove = convertView.findViewById(R.id.remove);
+
+            TextView number = convertView.findViewById(R.id.number);
+
+            number.setText(position + 1 + ".");
             name.setText(list.get(position));
 
-
-            ImageView remove = convertView.findViewById(R.id.remove);
+            // Listeners for duplicating and removing an item.
+            // They use the static removeItem and addItem methods created in MainActivity.
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -44,16 +46,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 }
             });
 
-            TextView quantity = convertView.findViewById(R.id.quantity);
-            ImageView addQuantity = convertView.findViewById(R.id.addQuantity);
-            addQuantity.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int i = Integer.parseInt(quantity.getText().toString());
-                    quantity.setText(i+1);
-                }
-            });
         }
         return convertView;
     }
+
 }

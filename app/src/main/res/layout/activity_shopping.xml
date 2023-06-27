@@ -1,61 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shopping">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/header">
-
-
+        android:layout_height="100sp"
+        android:background="#F1FEFF"
+        android:id="@+id/header"
+        >
         <EditText
-            android:id="@+id/input"
-            android:layout_width="282dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="43dp"
-            android:layout_marginEnd="85dp"
-            android:layout_marginBottom="612dp"
             android:ems="10"
             android:hint="Enter item here"
-            android:inputType="text" />
-
+            android:layout_centerInParent="true"
+            android:id="@+id/input"
+            />
         <ImageView
-            android:id="@+id/add"
             android:layout_width="40sp"
             android:layout_height="40sp"
-            android:layout_marginStart="349dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginBottom="635dp"
-            android:src="@drawable/add_item" />
+            android:layout_toRightOf="@+id/input"
+            android:id="@+id/add"
+            android:layout_marginLeft="7sp"
+            android:src="@drawable/add_item"
+            android:layout_centerVertical="true"
+            />
+
     </RelativeLayout>
-
-
-
-
-
-
-
     <ListView
-
-        android:layout_width="409dp"
-        android:layout_height="511dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list"
         android:layout_below="@+id/header"
-        android:id="@+id/list_item"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="100dp" >
-
-
-
-    </ListView>
+        />
 
     <ImageView
         android:id="@+id/imgrecipe"
