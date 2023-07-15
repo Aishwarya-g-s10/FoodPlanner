@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Timestamp;
+
 public class Database extends SQLiteOpenHelper {
     private static final String DB_NAME = "usersdb";
     private static final int DB_VERSION = 1;
@@ -27,7 +29,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(query1);
         String query2 = "CREATE TABLE ingridients (ingridient_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,quantity DECIMAL(5,2), recipeid INTEGER, unit TEXT,FOREIGN KEY (recipeid) REFERENCES recipe(recipe_id) ON DELETE CASCADE)";
         db.execSQL(query2);
-        String query3 = "CREATE TABLE calendar (event_id INTEGER PRIMARY KEY AUTOINCREMENT, event TEXT,date INTEGER, userid INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
+        String query3 = "CREATE TABLE calendar (event_id INTEGER PRIMARY KEY AUTOINCREMENT, event TEXT,date TEXT, userid INTEGER,FOREIGN KEY (userid) REFERENCES user(id) ON DELETE CASCADE)";
         db.execSQL(query3);
 //        addNewUser("Admin","Admin@gmail.com","Admin@123");
 //        addNewRecipe("Masala Dosa",20,1,1);
@@ -73,7 +75,7 @@ public class Database extends SQLiteOpenHelper {
         db.insert("ingridients", null, values);
         db.close();
     }
-    public void addNewEvent(String event, long date, int userid) {
+    public void addNewEvent(String event, String date, int userid) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -81,12 +83,13 @@ public class Database extends SQLiteOpenHelper {
         values.put("date", date);
         values.put("userid", userid);
         db.insert("calendar", null, values);
-        db.close();
+        return;
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + "recipe");
         db.execSQL("DROP TABLE IF EXISTS " + "ingridients");
+        db.execSQL("DROP TABLE IF EXISTS " + "calendar");
         onCreate(db);
     }
     public SQLiteDatabase getReadableDatabase() {

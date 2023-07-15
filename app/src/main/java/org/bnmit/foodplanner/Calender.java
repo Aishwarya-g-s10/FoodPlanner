@@ -11,8 +11,13 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Calender extends AppCompatActivity {
     ImageView recipe,home,timer,shopping,profile,check;
@@ -21,6 +26,7 @@ public class Calender extends AppCompatActivity {
     EditText plan;
     TextView display;
     Database database;
+    Calendar selDate;
     int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +104,25 @@ public class Calender extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String p=plan.getText().toString();
-                long selectedDateMillis=calendar.getDate();
-                database.addNewEvent(p, selectedDateMillis, id);
-                plan.setVisibility(View.GONE);
-                check.setVisibility(View.GONE);
+                if (p.isEmpty())
+                {
+                    Toast.makeText(Calender.this,"Please enter plan", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (selDate!=null)
+                {
+                    Date d=selDate.getTime();
+                    database.addNewEvent(p, String.valueOf(d), id);
+                    plan.setVisibility(View.GONE);
+                    check.setVisibility(View.GONE);
+                    display.setVisibility(View.VISIBLE);
+                    display.setText(""+p);
+                }
+                else
+                {
+                    Toast.makeText(Calender.this,"Please select the date", Toast.LENGTH_LONG).show();
+                    return;
+                }
             }
         });
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -110,9 +131,11 @@ public class Calender extends AppCompatActivity {
                 display.setVisibility(View.GONE);
                 plan.setVisibility(View.GONE);
                 check.setVisibility(View.GONE);
-                long selectedDateMillis=calendarView.getDate();
+                selDate=Calendar.getInstance();
+                selDate.set(i,i1,i2,0,0,0);
+                Date d=selDate.getTime();
                 String query = "SELECT event FROM calendar WHERE date = ? and userid=?";
-                String[] args = {String.valueOf(selectedDateMillis), String.valueOf(id)};
+                String[] args = {String.valueOf(d), String.valueOf(id)};
                 Cursor cursor = db.rawQuery(query, args);
                 if (cursor.moveToFirst()) {
                      String pl= cursor.getString(cursor.getColumnIndexOrThrow("event"));
@@ -122,6 +145,5 @@ public class Calender extends AppCompatActivity {
                 cursor.close();
             }
         });
-
     }
 }
