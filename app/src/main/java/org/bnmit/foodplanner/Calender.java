@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Calender extends AppCompatActivity {
-    ImageView recipe,home,timer,shopping,profile,check;
+    ImageView recipe,home,timer,shopping,profile,check,removeplan;
     CalendarView calendar;
     FloatingActionButton floatbtn;
     EditText plan;
@@ -45,6 +45,8 @@ public class Calender extends AppCompatActivity {
         plan.setVisibility(View.GONE);
         display=findViewById(R.id.textdisplay);
         display.setVisibility(View.GONE);
+        removeplan=findViewById(R.id.removeplan);
+        removeplan.setVisibility(View.GONE);
         id=getIntent().getIntExtra("id",1);
         database = new Database(Calender.this);
         SQLiteDatabase db = database.getReadableDatabase();
@@ -117,6 +119,8 @@ public class Calender extends AppCompatActivity {
                     check.setVisibility(View.GONE);
                     display.setVisibility(View.VISIBLE);
                     display.setText(""+p);
+                    removeplan.setVisibility(View.VISIBLE);
+                    floatbtn.setVisibility(View.GONE);
                 }
                 else
                 {
@@ -131,6 +135,8 @@ public class Calender extends AppCompatActivity {
                 display.setVisibility(View.GONE);
                 plan.setVisibility(View.GONE);
                 check.setVisibility(View.GONE);
+                removeplan.setVisibility(View.GONE);
+                floatbtn.setVisibility(View.VISIBLE);
                 selDate=Calendar.getInstance();
                 selDate.set(i,i1,i2,0,0,0);
                 Date d=selDate.getTime();
@@ -141,8 +147,21 @@ public class Calender extends AppCompatActivity {
                      String pl= cursor.getString(cursor.getColumnIndexOrThrow("event"));
                      display.setVisibility(View.VISIBLE);
                      display.setText(""+pl);
+                     removeplan.setVisibility(View.VISIBLE);
+                     floatbtn.setVisibility(View.GONE);
                 }
                 cursor.close();
+            }
+        });
+        removeplan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date d=selDate.getTime();
+                String msg=database.deletePlan(String.valueOf(d));
+                Toast.makeText(Calender.this,msg, Toast.LENGTH_LONG).show();
+                display.setVisibility(View.GONE);
+                removeplan.setVisibility(View.GONE);
+                floatbtn.setVisibility(View.VISIBLE);
             }
         });
     }

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.sql.Timestamp;
 
@@ -106,6 +107,17 @@ public class Database extends SQLiteOpenHelper {
             return ("Data updated successfully!");
         } else {
             return ("Failed to update data. Record not found.");
+        }
+    }
+    public String deletePlan(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String deleteQuery = "date = ?";
+        String[] deleteArgs = {date};
+        int rowsDeleted = db.delete("calendar", deleteQuery, deleteArgs);
+        if (rowsDeleted > 0) {
+            return ("Plan was deleted");
+        } else {
+            return("No plans were deleted");
         }
     }
 }
