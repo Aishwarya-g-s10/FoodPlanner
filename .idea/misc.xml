@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -13,7 +14,7 @@
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_list_recipe.xml" value="0.25" />
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_profile.xml" value="0.4" />
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_recipe.xml" value="0.25" />
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Android_workshop/FoodPlanner/app/src/main/res/layout/activity_shopping.xml" value="0.25" />

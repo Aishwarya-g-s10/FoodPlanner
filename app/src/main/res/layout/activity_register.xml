@@ -32,7 +32,6 @@
         android:hint="Enter Name"
         android:inputType="textPersonName"
         android:minHeight="48dp" />
-
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
@@ -42,7 +41,19 @@
         android:layout_marginEnd="107dp"
         android:layout_marginBottom="320dp"
         android:ems="10"
-        android:hint="New Password"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
+    <EditText
+        android:id="@+id/editTextPassword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="255dp"
+        android:ems="10"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
         android:minHeight="48dp" />
 
@@ -70,19 +81,6 @@
         android:text="SIGNUP"
 
         android:textSize="34sp" />
-
-    <EditText
-        android:id="@+id/editTextPassword1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="255dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/textView9"
