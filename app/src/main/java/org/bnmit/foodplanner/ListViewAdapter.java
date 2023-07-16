@@ -31,6 +31,9 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             convertView = mInflater.inflate(R.layout.list_row, null);
             TextView name = convertView.findViewById(R.id.name);
             ImageView remove = convertView.findViewById(R.id.remove);
+            ImageView add=convertView.findViewById(R.id.addquantity);
+            TextView display=convertView.findViewById(R.id.displayquantity);
+            ImageView sub=convertView.findViewById(R.id.removequantity);
 
             TextView number = convertView.findViewById(R.id.number);
 
@@ -43,6 +46,29 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     Shopping.removeItem(position);
+                }
+            });
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int q=Integer.parseInt(display.getText().toString());
+                    q++;
+                    display.setText(""+q);
+                }
+            });
+            sub.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int q=Integer.parseInt(display.getText().toString());
+                    if (q==1)
+                    {
+                        remove.performClick();
+                    }
+                    else
+                    {
+                        q--;
+                        display.setText(""+q);
+                    }
                 }
             });
 
